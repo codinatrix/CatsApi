@@ -28,7 +28,6 @@ namespace Cats.API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Cat>>> GetCats()
         {
-            _catService.GetCats();
             return await _context.Cats.ToListAsync();
         }
 
