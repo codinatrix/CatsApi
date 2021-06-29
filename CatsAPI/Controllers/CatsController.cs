@@ -31,13 +31,6 @@ namespace Cats.API.Controllers
             return await _context.Cats.ToListAsync();
         }
 
-        [Route("fivecats")]
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Cat>>> GetFiveCats()
-        {
-            return await _context.Cats.Take(5).ToListAsync();
-        }
-
         // GET: api/Cats/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Cat>> GetCat(Guid id)
