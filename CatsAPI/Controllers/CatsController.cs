@@ -110,6 +110,15 @@ namespace Cats.API.Controllers
             return NoContent();
         }
 
+        [Route("fivecats")]
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Cat>>> GetFiveCats()
+        {
+            return await _context.Cats.Take(5).ToListAsync();
+        }
+
+
+
         private bool CatExists(Guid id)
         {
             return _context.Cats.Any(e => e.CatId == id);
