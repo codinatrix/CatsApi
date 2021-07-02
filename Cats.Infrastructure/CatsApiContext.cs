@@ -17,10 +17,14 @@ namespace Cats.Infrastructure
         }
 
         public DbSet<Cat> Cats { get; set; }
+        public DbSet<Town> Towns { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Cat>();
+            modelBuilder.Entity<Cat>()
+                .HasOne(c => c.PlaceOfBirth)
+                .WithMany(t => t.Cats)
+                .HasForeignKey(c => c.TownId);
         }
     }
 }

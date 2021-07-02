@@ -11,7 +11,8 @@ namespace Cats.Domain.Services
 
     public interface ICatService
     {
-        public Task<List<Cat>> GetCats();
+        Task<List<Cat>> GetCats();
+        Task<List<Cat>> GetAlphabeticalMalmoCats();
     }
 
     public class CatService : ICatService
@@ -22,6 +23,24 @@ namespace Cats.Domain.Services
         {
             _catRepository = catRepository;
         }
+
+
+        private IQueryable<Cat> GetMalmoCats()
+        {
+            var cats = _catRepository.GetCats()
+                .Where(c => c.PlaceOfBirth.Name.Equals("Malmö"));
+
+                return cats;
+        }
+
+
+        public async Task<List<Cat>> GetAlphabeticalMalmoCats()
+        {
+            return await GetMalmoCats()
+                .OrderBy(c => c.Name)
+                .ToListAsync();
+        }
+
 
         public async Task<List<Cat>> GetCats()
         {

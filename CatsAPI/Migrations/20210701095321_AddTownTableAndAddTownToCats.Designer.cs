@@ -4,14 +4,16 @@ using Cats.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Cats.API.Migrations
 {
     [DbContext(typeof(CatApiContext))]
-    partial class CatApiContextModelSnapshot : ModelSnapshot
+    [Migration("20210701095321_AddTownTableAndAddTownToCats")]
+    partial class AddTownTableAndAddTownToCats
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

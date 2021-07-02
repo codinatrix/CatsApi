@@ -110,6 +110,14 @@ namespace Cats.API.Controllers
             return await _context.Cats.Take(5).ToListAsync();
         }
 
+        //Alphabetical Malmö Cats
+        [Route("specialcats")]
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Cat>>> GetSpecialCats()
+        {
+            return await _catService.GetAlphabeticalMalmoCats();
+        }
+
 
 
         private bool CatExists(Guid id)
